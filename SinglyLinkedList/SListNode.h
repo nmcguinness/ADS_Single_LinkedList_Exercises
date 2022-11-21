@@ -3,14 +3,23 @@ template <class T>
 class SListNode
 {
 	T data;
-	SListNode<T> *next;
+	SListNode<T>* next;
 public:
+	SListNode();
 	SListNode(T data);
 	void insertAfter(T data);
 	T& getData();
 	SListNode<T>* getNext();
-	void setNext(SListNode<T>*next);
+	void setNext(SListNode<T>* next);
 };
+
+template <class T>
+SListNode<T>::SListNode()
+{
+	this->data = default(T);
+	this->next = nullptr;
+}
+
 template <class T>
 SListNode<T>::SListNode(T data)
 {
@@ -20,8 +29,6 @@ SListNode<T>::SListNode(T data)
 template <class T>
 void SListNode<T>::insertAfter(T data)
 {
-	
-
 }
 template <class T>
 T& SListNode<T>::getData()
@@ -35,7 +42,7 @@ SListNode<T>* SListNode<T>::getNext()
 }
 
 template<class T>
-void SListNode<T>::setNext(SListNode<T> *next)
+void SListNode<T>::setNext(SListNode<T>* next)
 {
 	this->next = next;
 }
