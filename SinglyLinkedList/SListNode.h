@@ -5,21 +5,12 @@ class SListNode
 	T data;
 	SListNode<T>* next;
 public:
-	SListNode();
 	SListNode(T data);
 	void insertAfter(T data);
 	T& getData();
 	SListNode<T>* getNext();
 	void setNext(SListNode<T>* next);
 };
-
-template <class T>
-SListNode<T>::SListNode()
-{
-	this->data = default(T);
-	this->next = nullptr;
-}
-
 template <class T>
 SListNode<T>::SListNode(T data)
 {
@@ -29,6 +20,9 @@ SListNode<T>::SListNode(T data)
 template <class T>
 void SListNode<T>::insertAfter(T data)
 {
+	SListNode* node = new SListNode(data);
+	node->next = next;
+	next = node;
 }
 template <class T>
 T& SListNode<T>::getData()

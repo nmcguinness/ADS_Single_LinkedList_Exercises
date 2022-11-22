@@ -1,2 +1,7 @@
 ﻿  SinglyLinkedList.cpp
-  SinglyLinkedList.vcxproj -> D:\Work\2022-23\Semester 1\A&DS\Repos\ADS_Single_LinkedList_Exercises\Debug\SinglyLinkedList.exe
+D:\Work\2022-23\Semester 1\A&DS\Repos\ADS_Single_LinkedList_Exercises\SinglyLinkedList\SListIterator.h(10,11): error C2143: syntax error: missing ';' before '<'
+D:\Work\2022-23\Semester 1\A&DS\Repos\ADS_Single_LinkedList_Exercises\SinglyLinkedList\SListIterator.h(18): message : see reference to class template instantiation 'SListIterator<T>' being compiled
+D:\Work\2022-23\Semester 1\A&DS\Repos\ADS_Single_LinkedList_Exercises\SinglyLinkedList\SListIterator.h(10,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+D:\Work\2022-23\Semester 1\A&DS\Repos\ADS_Single_LinkedList_Exercises\SinglyLinkedList\SListIterator.h(10,1): error C2238: unexpected token(s) preceding ';'
+D:\Work\2022-23\Semester 1\A&DS\Repos\ADS_Single_LinkedList_Exercises\SinglyLinkedList\SListIterator.h(13,29): error C2061: syntax error: identifier 'SListNode'
+D:\Work\2022-23\Semester 1\A&DS\Repos\ADS_Single_LinkedList_Exercises\SinglyLinkedList\SListIterator.h(21,46): error C2061: syntax error: identifier 'SListNode'
