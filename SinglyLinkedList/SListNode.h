@@ -11,6 +11,7 @@ public:
 	SListNode<T>* getNext();
 	void setNext(SListNode<T>* next);
 };
+
 template <class T>
 SListNode<T>::SListNode(T data)
 {

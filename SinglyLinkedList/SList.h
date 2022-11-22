@@ -1,6 +1,6 @@
 #pragma once
-#include "SListIterator.h"
 #include "SListNode.h"
+#include "SListIterator.h"
 
 template <class T>
 class SList
@@ -20,7 +20,62 @@ public:
 template <class T>
 void SList<T>::remove(SListIterator<T> iter)
 {
+	//if iter is not valid
+	if (iter.currentNode == nullptr)
+		return;
+
+	//if list is empty
+	if (head == nullptr && tail == nullptr)
+		return;
+
+	//if list has one node and we are deleting it
+	if (iter.currentNode == head)
+	{
+		//store head ptr
+		SListNode<T>* toRemove = head;
+		//does head have a next, if yes then set new head
+		if (head->getNext() != nullptr)
+		{
+			head = head->getNext();
+		}
+		//one and only node has been removed
+		else
+		{
+			head = tail = nullptr;
+		}
+
+		//delete the old head
+		delete toRemove;
+		return;
+	}
+
+	//if we are deleting any node after the head then read until the next node is the node pointed to by iter
+	SListNode<T>* current = head;
+	while (current->getNext() != iter.currentNode)
+	{
+		current = current->getNext();
+	}
+
+	//store the node to remove
+	SListNode<T>* toRemove = current->getNext();
+
+	//check if the node to remove has a next
+	if (toRemove->getNext() != nullptr)
+	{
+		//if yes, set current to that node
+		current->setNext(toRemove->getNext());
+	}
+	//node to remove is the last node
+	else
+	{
+		current->setNext(nullptr);
+		tail = current;
+	}
+
+	//remove the node pointed to by iter
+	delete toRemove;
 }
+
 template <class T>
 void SList<T>::insert(SListIterator<T> iter, T data)
 {
@@ -54,9 +109,9 @@ void SList<T>::removeHead()
 	}
 	else
 	{
-		SListNode<T>* temp = head;
+		SListNode<T>* current = head;
 		head = head->getNext();
-		delete temp;
+		delete current;
 		if (head == nullptr)
 			tail = nullptr;
 	}
@@ -65,10 +120,6 @@ void SList<T>::removeHead()
 template <class T>
 void SList<T>::removeTail()
 {
-	//no node
-	//1 node
-	//N nodes
-
 	if (head == nullptr)
 	{
 		return;
@@ -80,13 +131,13 @@ void SList<T>::removeTail()
 	}
 	else
 	{
-		SListNode<T>* temp = head;
-		while (temp->getNext() != tail)
+		SListNode<T>* current = head;
+		while (current->getNext() != tail)
 		{
-			temp = temp->getNext();
+			current = current->getNext();
 		}
 		delete tail;
-		tail = temp;
+		tail = current;
 		tail->setNext(nullptr);
 	}
 }
@@ -118,9 +169,9 @@ void SList<T>::prepend(T data)
 	}
 	else
 	{
-		SListNode<T>* temp = new SListNode<T>(data);
-		temp->setNext(head);
-		head = temp;
+		SListNode<T>* current = new SListNode<T>(data);
+		current->setNext(head);
+		head = current;
 	}
 }
 

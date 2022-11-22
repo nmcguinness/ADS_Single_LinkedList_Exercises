@@ -7,7 +7,7 @@ namespace Microsoft {
 	namespace VisualStudio {
 		namespace CppUnitTestFramework
 		{
-			template<> static std::wstring ToString<SListNode<int>>(const SListNode<int> &b)
+			template<> static std::wstring ToString<SListNode<int>>(const SListNode<int>& b)
 			{
 				return L"SListNode";
 			};
@@ -25,7 +25,6 @@ namespace TestSinglyLinkedList
 			SList<int> list;
 			Assert::IsNull(list.head);
 			Assert::IsNull(list.tail);
-
 		}
 		TEST_METHOD(TestAppendEmpty)
 		{
@@ -107,7 +106,6 @@ namespace TestSinglyLinkedList
 			list.removeHead();
 			Assert::IsNull(list.head);
 			Assert::IsNull(list.tail);
-
 		}
 		TEST_METHOD(TestRemoveHeadMultipleItem)
 		{
@@ -125,7 +123,6 @@ namespace TestSinglyLinkedList
 			Assert::AreEqual(4, list.head->getData());
 			Assert::AreEqual(4, list.tail->getData());
 			Assert::AreSame(*list.head, *list.tail);
-
 		}
 		TEST_METHOD(TestRemoveTail1Item)
 		{
@@ -139,7 +136,6 @@ namespace TestSinglyLinkedList
 			list.removeTail();
 			Assert::IsNull(list.head);
 			Assert::IsNull(list.tail);
-
 		}
 		TEST_METHOD(TestRemoveTailMultipleItem)
 		{
@@ -157,7 +153,6 @@ namespace TestSinglyLinkedList
 			Assert::AreEqual(3, list.head->getData());
 			Assert::AreEqual(3, list.tail->getData());
 			Assert::AreSame(*list.head, *list.tail);
-
 		}
 
 		TEST_METHOD(TestInsertEmpty)
@@ -167,8 +162,6 @@ namespace TestSinglyLinkedList
 			list.insert(iter, 1);
 			Assert::AreEqual(1, list.head->getData());
 			Assert::AreSame(*list.head, *list.tail);
-
-
 		}
 		TEST_METHOD(TestInsertAtEnd)
 		{
@@ -180,8 +173,6 @@ namespace TestSinglyLinkedList
 			Assert::AreEqual(1, list.head->getData());
 			Assert::AreNotSame(*list.head, *list.tail);
 			Assert::AreEqual(2, list.tail->getData());
-
-
 		}
 		TEST_METHOD(TestInsertMiddle)
 		{
@@ -189,13 +180,11 @@ namespace TestSinglyLinkedList
 			list.append(1);
 			list.append(3);
 			SListIterator<int> iter = list.getIterator();
-			
+
 			list.insert(iter, 2);
 			Assert::AreEqual(1, list.head->getData());
 			Assert::AreEqual(2, list.head->getNext()->getData());
 			Assert::AreEqual(3, list.tail->getData());
-
-
 		}
 		TEST_METHOD(TestRemoveOneItem)
 		{
@@ -205,8 +194,6 @@ namespace TestSinglyLinkedList
 			list.remove(iter);
 			Assert::IsNull(list.head);
 			Assert::IsNull(list.tail);
-
-
 		}
 		TEST_METHOD(TestRemoveAtEnd)
 		{
@@ -218,7 +205,6 @@ namespace TestSinglyLinkedList
 			list.remove(iter);
 			Assert::AreEqual(1, list.head->getData());
 			Assert::AreSame(*list.head, *list.tail);
-			
 		}
 		TEST_METHOD(TestRemoveMiddle)
 		{
@@ -232,8 +218,6 @@ namespace TestSinglyLinkedList
 			Assert::AreEqual(1, list.head->getData());
 			Assert::AreEqual(3, list.tail->getData());
 			Assert::AreSame(*list.tail, *list.head->getNext());
-
-
 		}
 		TEST_METHOD(TestRemoveHeadWithIterator)
 		{
